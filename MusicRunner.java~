@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.*;
 
 public class MusicRunner
@@ -6,7 +5,10 @@ public class MusicRunner
 
   public static String Clean(String str)
   {
-    return str.substring(1, str.length() - 1).trim();
+    String output = "";
+    if(str.length() > 2)
+      output = str.substring(1, str.length() - 1).trim();
+    return output;
   }
   public static void main (String[] args)
   {
@@ -32,14 +34,22 @@ public class MusicRunner
       // You probably will comment this out but for now print out the line so you can see what is there
       
       // Let's try to create a Song object
-      int year = Integer.parseInt(Clean(data[3]));
-      Double score = Double.parseDouble(Clean(data[4]));
+      int year = 0;
+      double score = 0;
       
+      try
+      {
+        year = Integer.parseInt(Clean(data[3]));
+        score = Double.parseDouble(Clean(data[4]));
+      }
+      catch (Exception e)
+      {
+      }
       
       Song song = new Song(Clean(data[0]), Clean(data[1]), year, score, Clean(data[16]));  // data[0] is the artist and data[1] is the name
       if(Clean(data[2]).equals("song"))
       {
-        if(song.name.indexOf("love") != -1 && song.year > 2000)
+        if(song.name.indexOf("the") != -1 && song.year > 2000)
         {
           songs.add(song);
           count++;

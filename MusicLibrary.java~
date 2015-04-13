@@ -30,7 +30,7 @@ public class MusicLibrary {
    */
   public void Sort ()
   {
-     currentSortField = field;
+   //  currentSortField = field;
   }
   
   /*
