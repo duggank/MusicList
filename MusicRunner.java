@@ -12,7 +12,7 @@ public class MusicRunner
   {
     int count = 0;
     MusicReader mr = new MusicReader();
-    MusicLibrary playlist = new MusicLibrary();
+    MusicLibrary library = new MusicLibrary();
     mr.open("musiclist.csv");
    
     String[] data = mr.getSongData();
@@ -43,7 +43,7 @@ public class MusicRunner
       if (type.equals("song"))
       {   
         //songs.add(song);
-        playlist.addSong(song);
+        library.addSong(song);
         count++;
       }
             
@@ -59,11 +59,11 @@ public class MusicRunner
       data = mr.getSongData();  // Get next line of song data
     }
     
-    playlist.Sort();
+    library.Sort();
     
-    for( int i = playlist.count()-1; i >= 0; i--)
+    for( int i = library.count()-1; i >= 0; i--)
     {
-      Song song = playlist.getSong(i);
+      Song song = library.getSong(i);
       
       System.out.println("Artist: " + song.artist + ", Name: " + song.name + ", Year: " + song.year);
     }
